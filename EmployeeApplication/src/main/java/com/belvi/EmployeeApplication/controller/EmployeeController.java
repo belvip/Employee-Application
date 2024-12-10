@@ -17,7 +17,7 @@ public class EmployeeController {
     public List<Employee> findAllEmployees(){
         return employeeService.getAllEmployees();
     }
- 
+
     @RequestMapping("/api/public/employees/{id}")
     public Employee findAllEmployee(@PathVariable int id){
         return employeeService.getAnEmployee(id);
@@ -27,5 +27,10 @@ public class EmployeeController {
     @RequestMapping(value = "/api/admin/employees", method = RequestMethod.POST)
     public void createEmployee(@RequestBody Employee employee){
         employeeService.createEmployee(employee);
+    }
+
+    @RequestMapping(value = "/api/admin/employees/{id}", method = RequestMethod.PUT)
+    public void updateEmployee(@PathVariable int id, @RequestBody Employee employee){
+        employeeService.updateEmployee(employee);
     }
 }
