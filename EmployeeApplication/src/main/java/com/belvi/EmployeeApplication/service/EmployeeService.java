@@ -4,14 +4,17 @@ package com.belvi.EmployeeApplication.service;
 import com.belvi.EmployeeApplication.entity.Employee;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class EmployeeService {
-    List<Employee> employeeList = Arrays.asList(
-            new Employee(1, "First Employee", "Messassi"),
-            new Employee(2, "Second Employee", "Douala")
+    List<Employee> employeeList = new ArrayList<>(
+            Arrays.asList(
+                    new Employee(1, "First Employee", "Messassi"),
+                    new Employee(2, "Second Employee", "Douala")
+            )
     );
 
     public List<Employee> getAllEmployees(){
@@ -22,5 +25,9 @@ public class EmployeeService {
         return employeeList.stream()
                 .filter(e -> (e.getEmployeeId() == id))
                 .findFirst().get();
+    }
+
+    public void createEmployee(Employee employee){
+        employeeList.add(employee);
     }
 }
